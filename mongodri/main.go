@@ -12,6 +12,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+const DB = "meteor"
+
 // raw mongo doc raw, pattern string to match
 func Ismatch(raw bson.Raw, pattern string) bool {
 	return bytes.Index(raw, []byte(pattern)) > 1
@@ -43,14 +45,9 @@ func replaceDeep(raw bson.Raw, src string, dest string) (bson.Raw, error) {
 
 // replace src to dest in target collection
 func replace(collName string, src string, dest string) {
+	client := GetMongoDBClient()
+	coll := client.Database(DB).Collection(collName)
 
-	client, err := mongo.Connect(bgCtx, options.Client().ApplyURI("mongodb://localhost:4001"))
-	check(err)
-	defer func() {
-		_ = client.Disconnect(bgCtx)
-	}()
-	db := client.Database("meteor")
-	coll := db.Collection(collName)
 	cursor, err := coll.Find(bgCtx, bson.D{})
 	panicErr(err)
 	defer cursor.Close(bgCtx)
@@ -80,7 +77,7 @@ func ConnectMongoDB() {
 	bgCtx, _ = context.WithTimeout(context.Background(), 30*time.Second)
 	// user Connection database
 	// Set client options
-	clientOptions := options.Client().ApplyURI("mongo://localhost4001/meteor")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:4001/" + DB)
 	// Connect to MongoDB
 	var err error
 	userclient, err = mongo.Connect(bgCtx, clientOptions)
@@ -88,7 +85,7 @@ func ConnectMongoDB() {
 	// Check the connection
 	err = userclient.Ping(bgCtx, nil)
 	check(err)
-	fmt.Println("Connected to user MongoDB!")
+	fmt.Println("Connected to meteor MongoDB!")
 
 }
 
@@ -98,19 +95,15 @@ func GetMongoDBClient() *mongo.Client {
 }
 
 func main() {
-	// ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	// defer cancel()
-	// client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:4001"))
-	// check(err)
 	ConnectMongoDB()
 	defer func() {
 		_ = userclient.Disconnect(bgCtx)
 	}()
-	db := userclient.Database("meteor")
+	db := userclient.Database(DB)
 	colls, err := db.ListCollectionNames(bgCtx, bson.D{})
 	panicErr(err)
 	for _, colName := range colls {
-		replace(colName, "tsmc.com.tw", "tsmc.com")
+		replace(colName, "tsmc.com", "tsmc.com.tw")
 	}
 }
 
