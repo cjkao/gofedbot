@@ -1,4 +1,4 @@
-# setup sequence
+****# setup sequence
 - setup coredns
 - add `127.0.0.1` to `/etc/resolve.conf` before meteor start
 - update `/etc/hosts` for browser
