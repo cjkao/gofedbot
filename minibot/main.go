@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ruilisi/Rocket.Chat.Go.SDK/rest"
+	"github.com/cjkao/Rocket.Chat.Go.SDK/rest"
 )
 
 func main() {

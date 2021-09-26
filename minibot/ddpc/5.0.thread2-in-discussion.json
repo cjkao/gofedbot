@@ -1,0 +1,47 @@
+{
+	"msg": "changed",
+	"collection": "stream-room-messages",
+	"id": "id",
+	"fields": {
+		"eventName": "__my_messages__",
+		"args": [
+			{
+				"_id": "J988vWmvkQ3ScG44x",
+				"rid": "R8TvfTPkA8dj85D3e",
+				"tmid": "e4tphAsSkGynLCAvs",
+				"msg": "MMM-thread 2 msg",
+				"ts": {
+					"$date": 1632669527057
+				},
+				"u": {
+					"_id": "DPt636Ki5GpkLpP4f",
+					"username": "a",
+					"name": "a"
+				},
+				"unread": true,
+				"_updatedAt": {
+					"$date": 1632669527098
+				},
+				"urls": [],
+				"mentions": [],
+				"channels": [],
+				"md": [
+					{
+						"type": "PARAGRAPH",
+						"value": [
+							{
+								"type": "PLAIN_TEXT",
+								"value": "MMM-thread 2 msg"
+							}
+						]
+					}
+				]
+			},
+			{
+				"roomParticipant": true,
+				"roomType": "p",
+				"roomName": "xdwy7fn2spggkjiby"
+			}
+		]
+	}
+}

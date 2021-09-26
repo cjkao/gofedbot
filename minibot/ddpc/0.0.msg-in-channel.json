@@ -1,0 +1,46 @@
+{
+	"msg": "changed",
+	"collection": "stream-room-messages",
+	"id": "id",
+	"fields": {
+		"eventName": "__my_messages__",
+		"args": [
+			{
+				"_id": "eNCgKKwZYv8qh4Cy9",
+				"rid": "gT8qYr3gm4c5wRJR4",
+				"msg": "ddd's message",
+				"ts": {
+					"$date": 1632669785146
+				},
+				"u": {
+					"_id": "DPt636Ki5GpkLpP4f",
+					"username": "a",
+					"name": "a"
+				},
+				"unread": true,
+				"_updatedAt": {
+					"$date": 1632669785171
+				},
+				"urls": [],
+				"mentions": [],
+				"channels": [],
+				"md": [
+					{
+						"type": "PARAGRAPH",
+						"value": [
+							{
+								"type": "PLAIN_TEXT",
+								"value": "ddd's message"
+							}
+						]
+					}
+				]
+			},
+			{
+				"roomParticipant": true,
+				"roomType": "p",
+				"roomName": "ddd"
+			}
+		]
+	}
+}

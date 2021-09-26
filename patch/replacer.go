@@ -67,10 +67,11 @@ func replaceDeep(raw *bson.Raw, src string, dest string) (bson.Raw, error) {
 
 // Replace src to dest in target collection
 // return number of record updated
-func Replace(client lun.IClient, db, collName string, wg *sync.WaitGroup, src, dest string) int {
+func Replace(client lun.IClient, db, collName string, wg *sync.WaitGroup, src, dest string, dry bool) int {
 	// client := GetMongoDBClient()
+	fmt.Printf("coll:%s\n", collName)
 	coll := client.Database(db).Collection(collName)
-	cursor, err := coll.Find(bgCtx, bson.D{})
+	cursor, err := coll.Find(bgCtx, bson.D{{}})
 	PanicErr(err)
 	defer cursor.Close(bgCtx)
 	tablePrint := false
@@ -86,13 +87,18 @@ func Replace(client lun.IClient, db, collName string, wg *sync.WaitGroup, src, d
 		}
 
 		id := nRaw.Lookup("_id")
-		result, err := coll.ReplaceOne(bgCtx, bson.M{"_id": id}, nRaw)
-		counter += int(result.ModifiedCount)
-		PanicErr(err)
-		if !tablePrint {
-			tablePrint = true
-			println(collName)
-			fmt.Printf("%#v\n", result)
+		if dry {
+			fmt.Printf("Element: %v\n", nRaw)
+		} else {
+
+			result, err := coll.ReplaceOne(bgCtx, bson.M{"_id": id}, nRaw)
+			counter += int(result.ModifiedCount)
+			PanicErr(err)
+			if !tablePrint {
+				tablePrint = true
+				println(collName)
+				fmt.Printf("%#v\n", result)
+			}
 		}
 
 	}

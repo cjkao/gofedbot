@@ -3,7 +3,7 @@ package main
 import (
 	"net/url"
 
-	"github.com/ruilisi/Rocket.Chat.Go.SDK/rest"
+	"github.com/cjkao/Rocket.Chat.Go.SDK/rest"
 )
 
 func InitRcServer(b bool) {

@@ -83,17 +83,18 @@ func TestReplace(t *testing.T) {
 		wg       *sync.WaitGroup
 		src      string
 		dest     string
+		dry      bool
 	}
 	tests := []struct {
 		name string
 		args args
 	}{
-		{"mem", args{client, "meteor", collA, wg, "tsmc.com.tw", "tsmc.com"}},
+		{"mem", args{client, "meteor", collA, wg, "tsmc.com.tw", "tsmc.com", true}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			wg.Add(1)
-			replaced := Replace(tt.args.client, tt.args.db, tt.args.collName, tt.args.wg, tt.args.src, tt.args.dest)
+			replaced := Replace(tt.args.client, tt.args.db, tt.args.collName, tt.args.wg, tt.args.src, tt.args.dest, tt.args.dry)
 			assert.Equal(t, total+1, replaced)
 
 		})

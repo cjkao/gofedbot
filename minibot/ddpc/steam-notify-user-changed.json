@@ -1,0 +1,31 @@
+{
+	"msg": "changed",
+	"collection": "stream-notify-user",
+	"id": "id",
+	"fields": {
+		"eventName": "DPt636Ki5GpkLpP4f/userData",
+		"args": [
+			{
+				"diff": {
+					"__rooms": [
+						"GENERAL",
+						"yhy5xjjEAjcdtN8TX",
+						"BZdpcBydDxRbcrJ6u",
+						"B4NDvgLFiE5TPt9LE",
+						"BeBTwWcrFFXZiYFg4",
+						"efDsYxBHAbe55A9i6",
+						"igcZxMcLpiNt4wfw9",
+						"Dxv8qY44XCAbQPj5g",
+						"7wQxYLyASXixXwGTA",
+						"9eyoeZQrJKKv8fmST",
+						"emKSQyouGxAW5PFA7"
+					],
+					"_updatedAt": {
+						"$date": 1629729217502
+					}
+				},
+				"unset": {},
+				"type": "updated"
+			}
+		]
+	}

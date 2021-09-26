@@ -28,7 +28,7 @@ func main() {
 	for _, colName := range colls {
 		wg.Add(1)
 		// println("wg add")
-		go patch.Replace(userclient, DB, colName, wg, "tsmc.com.tw", "tsmc.com")
+		patch.Replace(userclient, DB, colName, wg, "with_b_in_example", "with_b", true)
 		// time.Sleep(1 * time.Second)
 	}
 	wg.Wait()

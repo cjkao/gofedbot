@@ -1,0 +1,40 @@
+{
+	"args": [
+		{
+			"_id": "mtRnjPyKagdfAnfKk",
+			"_updatedAt": {
+				"$date": 1632641856347
+			},
+			"channels": [],
+			"md": [
+				{
+					"type": "PARAGRAPH",
+					"value": [
+						{
+							"type": "PLAIN_TEXT",
+							"value": "ssssssssssssssssssssssssssssssssssssssssssssssss"
+						}
+					]
+				}
+			],
+			"mentions": [],
+			"msg": "ssssssssssssssssssssssssssssssssssssssssssssssss",
+			"rid": "C2g3S9RNxqnKFuhzA",
+			"ts": {
+				"$date": 1632641856294
+			},
+			"u": {
+				"_id": "DPt636Ki5GpkLpP4f",
+				"name": "a",
+				"username": "a"
+			},
+			"urls": []
+		},
+		{
+			"roomName": "d2",
+			"roomParticipant": true,
+			"roomType": "p"
+		}
+	],
+	"eventName": "__my_messages__"
+}

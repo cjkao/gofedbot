@@ -1,0 +1,91 @@
+{
+	"msg": "changed",
+	"collection": "stream-room-messages",
+	"id": "id",
+	"fields": {
+		"eventName": "__my_messages__",
+		"args": [
+			{
+				"_id": "Ruqhth6QuxCxbinK2",
+				"rid": "rG2vNHjY2u5HwqatZ",
+				"msg": "sssssssssssssZZ",
+				"ts": {
+					"$date": 1630830230706
+				},
+				"u": {
+					"_id": "DPt636Ki5GpkLpP4f",
+					"username": "a",
+					"name": "a"
+				},
+				"unread": true,
+				"_updatedAt": {
+					"$date": 1630830230731
+				},
+				"urls": [],
+				"mentions": [],
+				"channels": [],
+				"md": [
+					{
+						"type": "PARAGRAPH",
+						"value": [
+							{
+								"type": "PLAIN_TEXT",
+								"value": "sssssssssssssZZ"
+							}
+						]
+					}
+				]
+			},
+			{
+				"roomParticipant": true,
+				"roomType": "p",
+				"roomName": "2b"
+			}
+		]
+	}
+}
+{
+	"msg": "changed",
+	"collection": "stream-room-messages",
+	"id": "id",
+	"fields": {
+		"eventName": "__my_messages__",
+		"args": [
+			{
+				"_id": "Ruqhth6QuxCxbinK2",
+				"rid": "rG2vNHjY2u5HwqatZ",
+				"msg": "sssssssssssssZZ",
+				"ts": {
+					"$date": 1630830230706
+				},
+				"u": {
+					"_id": "DPt636Ki5GpkLpP4f",
+					"username": "a",
+					"name": "a"
+				},
+				"_updatedAt": {
+					"$date": 1630830233531
+				},
+				"urls": [],
+				"mentions": [],
+				"channels": [],
+				"md": [
+					{
+						"type": "PARAGRAPH",
+						"value": [
+							{
+								"type": "PLAIN_TEXT",
+								"value": "sssssssssssssZZ"
+							}
+						]
+					}
+				]
+			},
+			{
+				"roomParticipant": true,
+				"roomType": "p",
+				"roomName": "2b"
+			}
+		]
+	}
+}

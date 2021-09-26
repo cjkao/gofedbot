@@ -1,0 +1,41 @@
+{
+	"msg": "changed",
+	"collection": "stream-room-messages",
+	"id": "id",
+	"fields": {
+		"eventName": "__my_messages__",
+		"args": [
+			{
+				"_id": "6rAXe8Gq6quzLX6nJ",
+				"rid": "R8TvfTPkA8dj85D3e",
+				"u": {
+					"_id": "DPt636Ki5GpkLpP4f",
+					"username": "a",
+					"name": "a"
+				},
+				"ts": {
+					"$date": 1632668673544
+				},
+				"_updatedAt": {
+					"$date": 1632668673544
+				},
+				"attachments": [
+					{
+						"text": "ssssssss",
+						"author_name": "a",
+						"author_icon": "/avatar/a",
+						"message_link": "/group/ddd?msg=oEQw5siscDMBQ3DyK",
+						"ts": {
+							"$date": 1632668113252
+						}
+					}
+				]
+			},
+			{
+				"roomParticipant": true,
+				"roomType": "p",
+				"roomName": "xdwy7fn2spggkjiby"
+			}
+		]
+	}
+}
