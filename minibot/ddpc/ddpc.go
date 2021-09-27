@@ -9,6 +9,7 @@ import (
 	"github.com/Jeffail/gabs/v2"
 	"github.com/cjkao/Rocket.Chat.Go.SDK/models"
 	rt "github.com/cjkao/Rocket.Chat.Go.SDK/realtime"
+	rest "github.com/cjkao/Rocket.Chat.Go.SDK/rest"
 	// "github.com/stretchr/testify/assert"
 )
 
@@ -18,17 +19,52 @@ var (
 )
 
 func main() {
-	rtCli := getLoggedInClient("example.cj", "4002")
+	rtCli, restClient := getLoggedInClient("example.cj", "4002")
 	PrettyPrint(rtCli)
 	SubscribeToMessageStream(rtCli)
+
+	createTeam(restClient, "xx", "a", "b", "d")
+	done2 := make(chan interface{})
+	<-done2
 }
 
-func getLoggedInClient(host string, port string) (rtClient *rt.Client) {
-	c, _ := rt.NewClient(&url.URL{Host: host + ":" + port}, true)
-	rtClient = c
-	u, error := rtClient.Login(&models.UserCredentials{Username: "b", Password: "b", Email: "b@b.b"})
+func createTeam(rc *rest.Client, teamName string, users ...string) string {
+	rErr := ""
+	mems := []string{}
+	// users := []string{"a", "b", "d", "e"}
+	for _, user := range users {
+		us, err := rc.GetUserStatus(user)
+		if err == nil {
+			mems = append(mems, us.ID)
+		} else {
+			rErr = rErr + user
+		}
+	}
+	req := &models.TeamsCreateRequest{
+		Name:    teamName,
+		Type:    1,
+		Members: mems,
+	}
+	resp, err := rc.TeamsCreate(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%#v", resp)
+	if resp.Status.Success {
+		return "OK:" + teamName
+	} else {
+		return "Fail:" + err.Error()
+	}
+}
+func getLoggedInClient(host string, port string) (rtClient *rt.Client, restClient *rest.Client) {
+	url := &url.URL{Host: host + ":" + port}
+	rtClient, _ = rt.NewClient(url, true)
+	// rtClient = c
+	cred := &models.UserCredentials{Username: "b", Password: "b", Email: "b@b.b"}
+	user, error := rtClient.Login(cred)
+	restClient = rest.NewClient(url, false)
+	restClient.Login(cred)
 	check(error)
-	user = u
 	PrettyPrint(user)
 	return
 }
@@ -38,6 +74,7 @@ func check(e error) {
 		panic(e)
 	}
 }
+
 func SubscribeToMessageStream(c *rt.Client) {
 	messageChannelRaw := make(chan map[string]interface{}, 1)
 	go func(msgChan chan map[string]interface{}) {
@@ -60,8 +97,6 @@ func SubscribeToMessageStream(c *rt.Client) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	done2 := make(chan interface{})
-	<-done2
 
 }
 
